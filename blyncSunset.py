@@ -14,16 +14,14 @@ localLatitude = 44.074278
 localLongitude = -121.270139
 localLocationInfo = LocationInfo(localCity, localRegion, localTzName, localLatitude, localLongitude)
 
-localSun = sun(observer = localLocationInfo.observer, tzinfo=localZoneInfo)
-
-print("Timezone: ", localTzName)
-print("sunset time: ", localSun["sunset"])
-print("dusk time: ", localSun["dusk"])
-print("sunrise time: ", localSun["sunrise"])
-print("current time: ", datetime.now(tz=localZoneInfo))
+#print("Timezone: ", localTzName)
+#print("sunset time: ", localSun["sunset"])
+#print("dusk time: ", localSun["dusk"])
+#print("sunrise time: ", localSun["sunrise"])
+#print("current time: ", datetime.now(tz=localZoneInfo))
 
 while True:
-    localSun = sun(localLocationInfo.observer, tzinfo=localZoneInfo)
+    localSun = sun(observer = localLocationInfo.observer, tzinfo=localZoneInfo)
 
     dtNow = datetime.now(tz=localZoneInfo)
     bedtime = (dtNow.date(), (20, 0, 0, 0))
@@ -33,5 +31,5 @@ while True:
     else:
         os.system('busylight --all on 0xbbffff')
 
-    sleep(10)
+    sleep(120)
 
