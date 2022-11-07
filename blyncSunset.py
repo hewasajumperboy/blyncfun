@@ -28,9 +28,9 @@ while True:
     bedtime = datetime.combine(dtNow.date(), time(20, 0, 0, 0, tzinfo=localZoneInfo))
 
     if dtNow > localSun["dusk"] and dtNow < bedtime: # am I in between sunset and bedtime?
-        os.system('busylight --all off')
-    else:
         os.system('busylight --all on 0xbbffff')
+    else:
+        os.system('busylight --all off')
 
     sleep(120)
 
