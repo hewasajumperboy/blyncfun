@@ -4,6 +4,7 @@ import pytz
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from time import sleep
+import os
 
 localCity="Bend"
 localRegion="Oregon"
@@ -28,9 +29,9 @@ while True:
     bedtime = (dtNow.date(), (20, 0, 0, 0))
 
     if dtNow > localSun["dusk"] and dtNow < bedtime: # am I in between sunset and bedtime?
-        print("Daylight")
+        os.system('busylight --all off')
     else:
-        print("Switch on nightlight")
+        os.system('busylight --all on 0xbbffff')
 
     sleep(10)
 
