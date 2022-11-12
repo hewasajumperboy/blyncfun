@@ -28,7 +28,7 @@ blinkProcessRunning = False
 
 while True:
     #if new day?
-    if dtNow.day != datetime.now().day:
+    if dtNow.day != datetime.now(tz=localZoneInfo).day:
         #update day variable with today
         dtNow = datetime.now(tz=localZoneInfo)
         #recalculate the sun today
