@@ -42,9 +42,11 @@ while True:
 
     # check if we're between dusk and bedtime (note: this might be an issue in the summer)
     if dtNow > localSun["dusk"] and dtNow < bedtime:
-        os.system('busylight --all on 0xbbffff')
+        if blinkProcessRunning == False:
+                os.system('busylight --all on 0xbbffff')
     else:
-        os.system('busylight --all off')
+        if blinkProcessRunning == False:
+            os.system('busylight --all off')
 
     #check if we should start warning  of impending bedtime
     if dtNow >= bedtimeWarnStart and dtNow <= bedtimeWarnEnd:
@@ -56,6 +58,7 @@ while True:
         if blinkProcessRunning == True:
             os.killpg(os.getpgid(blinkProcess.pid), signal.SIGTERM)
             blinkProcessRunning = False
+            os.system('busylight --all on 0xbbffff')
 
     sleep(60)
 
